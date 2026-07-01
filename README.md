@@ -21,6 +21,9 @@ export GATE_API_KEY="your-api-key"
 export GATE_API_SECRET="your-api-secret"
 # Optional. Override the REST host (e.g. to point at a proxy).
 export GATE_API_BASE_URL=""
+# Optional. Route all REST traffic through a proxy. Supports http, https,
+# socks5, and socks5h schemes, with optional user:pass@ auth.
+export HTTPS_PROXY="http://127.0.0.1:7890"
 ```
 
 ### Output format

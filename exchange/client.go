@@ -24,6 +24,9 @@ func (c *Client) baseOptions() []client.Options {
 	if config.Config.BaseURL != "" {
 		opts = append(opts, client.WithBaseURL(config.Config.BaseURL))
 	}
+	if config.Config.Proxy != "" {
+		opts = append(opts, client.WithProxy(config.Config.Proxy))
+	}
 	return opts
 }
 
