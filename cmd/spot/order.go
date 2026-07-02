@@ -26,7 +26,7 @@ func InitOrderCmds(defaultAccount string) []*cobra.Command {
 * Required: --currency-pair, --side, --amount
 * For LIMIT orders also pass --price. Default type is limit.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#create-an-order`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/#create-an-order`,
 		Run: func(cmd *cobra.Command, _ []string) { createOrder(cmd, defaultAccount) },
 	}
 
@@ -36,7 +36,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#create-an-order`,
 		Short:   "List orders for a currency pair",
 		Long: `List orders for a currency pair filtered by status (open or finished).
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-orders`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/#list-orders`,
 		Run: func(cmd *cobra.Command, _ []string) { listOrders(cmd, defaultAccount) },
 	}
 
@@ -45,7 +45,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-orders`,
 		Short: "List all open orders across pairs",
 		Long: `List all open orders for the account, across every currency pair.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-all-open-orders`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/#list-all-open-orders`,
 		Run: func(cmd *cobra.Command, _ []string) { listOpenOrders(cmd, defaultAccount) },
 	}
 
@@ -54,7 +54,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-all-open-orders`,
 		Short: "Query a single order",
 		Long: `Query a single order by its id and currency pair.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-a-single-order`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/#query-single-order-details`,
 		Run: func(cmd *cobra.Command, _ []string) { getOrder(cmd, defaultAccount) },
 	}
 
@@ -64,7 +64,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-a-single-order`,
 		Long: `Cancel an order by --order-id, or cancel all open orders when no id is given.
 If --currency-pair is set without --order-id, only that pair's open orders are canceled.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#cancel-a-single-order`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/#cancel-single-order`,
 		Run: func(cmd *cobra.Command, _ []string) { cancelOrder(cmd, defaultAccount) },
 	}
 

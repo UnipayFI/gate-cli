@@ -21,7 +21,7 @@ func InitPositionCmds() []*cobra.Command {
 		Short:   "List positions",
 		Long: `List positions for the settle currency. Use --holding to only show open positions.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-all-positions-of-a-user`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#get-user-position-list`,
 		Run: listPositions,
 	}
 
@@ -30,7 +30,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-all-positions-of-a
 		Short: "Get a single position",
 		Long: `Get a single position by contract.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-single-position`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#get-single-position-information`,
 		Run: getPosition,
 	}
 
@@ -39,7 +39,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-single-position`,
 		Short: "Update isolated position margin",
 		Long: `Add or reduce isolated position margin. --change is signed: positive adds, negative reduces.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#update-position-margin`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#update-position-margin`,
 		Run: updateMargin,
 	}
 
@@ -48,7 +48,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#update-position-margin`
 		Short: "Update position leverage",
 		Long: `Update position leverage. Use "0" for cross margin, otherwise the isolated leverage.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#update-position-leverage`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#update-position-leverage`,
 		Run: updateLeverage,
 	}
 
@@ -58,7 +58,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#update-position-leverag
 		Long: `Enable or disable dual (hedge) position mode for the settle currency.
 Cannot be changed while holding positions or open orders.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#enable-or-disable-dual-mode`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#set-position-mode`,
 		Run: setDualMode,
 	}
 
@@ -67,7 +67,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#enable-or-disable-dual-
 		Short: "Query position close history",
 		Long: `Query the position close (realised PnL) history.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-position-close-history`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#query-position-close-history`,
 		Run: showPositionClose,
 	}
 

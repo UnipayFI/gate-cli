@@ -15,7 +15,7 @@ func InitLoanCmds() []*cobra.Command {
 		Long: `Borrow a currency on the unified account. The amount must sit between the
 currency's minimum and the platform/user borrow limit.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#borrow-or-repay`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#borrow-or-repay`,
 		Run: borrow,
 	}
 
@@ -25,7 +25,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#borrow-or-repay`,
 		Long: `Repay a borrowed currency. Pass --amount for a partial repayment, or --all to
 clear the full outstanding balance.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#borrow-or-repay`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#borrow-or-repay`,
 		Run: repay,
 	}
 
@@ -34,7 +34,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#borrow-or-repay`,
 		Short: "List outstanding borrowings",
 		Long: `List the unified account's outstanding borrowings.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-loans`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#query-loans`,
 		Run: listLoans,
 	}
 
@@ -43,7 +43,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-loans`,
 		Short: "List borrow/repay history",
 		Long: `List the unified account's borrow and repayment history.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-loan-records`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#query-loan-records`,
 		Run: listLoanRecords,
 	}
 
@@ -52,7 +52,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-loan-records`,
 		Short: "List interest-deduction history",
 		Long: `List the unified account's interest-deduction history.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#interest-records-for-the-unified-account`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#query-interest-deduction-records`,
 		Run: listInterestRecords,
 	}
 

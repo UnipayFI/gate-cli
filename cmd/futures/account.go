@@ -20,7 +20,7 @@ var (
 		Short: "Show futures account summary",
 		Long: `Show the futures account summary (equity, margin, unrealised PnL) for the settle currency.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-futures-account`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#get-futures-account`,
 		Run: showAccount,
 	}
 
@@ -29,7 +29,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-futures-account`,
 		Short: "Show trading fee rates",
 		Long: `Query user trading fee rates, keyed by contract. Use --contract to filter.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-user-trading-fee-rates-2`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#query-futures-market-trading-fee-rates`,
 		Run: showFee,
 	}
 
@@ -38,7 +38,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-user-trading-fee-
 		Short: "Query account balance change history",
 		Long: `Query futures account balance change history (pnl, fees, funding, etc.).
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-account-book-2`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#query-futures-account-change-history`,
 		Run: showAccountBook,
 	}
 )

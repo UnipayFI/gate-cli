@@ -16,7 +16,7 @@ func InitTradeCmds(defaultAccount string) []*cobra.Command {
 		Long: `List personal spot trades. Use --currency-pair to filter a pair and
 --order-id (with --currency-pair) to filter a single order.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-personal-trading-history`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/#query-personal-trading-records`,
 		Run: func(cmd *cobra.Command, _ []string) { listTrades(cmd, defaultAccount) },
 	}
 

@@ -14,7 +14,7 @@ func InitTradeCmds() []*cobra.Command {
 		Long: `List personal futures trades for the settle currency. Use --contract to filter
 a contract and --order-id to filter a single order.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-personal-trading-history-2`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#query-personal-trading-records`,
 		Run: listTrades,
 	}
 

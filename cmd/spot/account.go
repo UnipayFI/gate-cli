@@ -18,7 +18,7 @@ var (
 		Short: "Show spot account balances",
 		Long: `List spot account balances. Use --currency to filter a single currency.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-spot-accounts`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/`,
 		Run: showAccount,
 	}
 
@@ -27,7 +27,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-spot-accounts`,
 		Short: "Show trading fee rates",
 		Long: `Query user trading fee rates. Use --currency-pair for a single pair.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-user-trading-fee-rates`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/#query-account-fee-rates`,
 		Run: showFee,
 	}
 
@@ -36,7 +36,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-user-trading-fee-
 		Short: "Query account balance change history",
 		Long: `Query spot account balance change history (deposits, trades, fees, etc.).
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-account-book`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/spot/#query-spot-account-transaction-history`,
 		Run: showAccountBook,
 	}
 )

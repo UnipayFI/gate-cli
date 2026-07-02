@@ -23,7 +23,7 @@ func InitOrderCmds() []*cobra.Command {
 * Required: --contract, --size (signed: positive = long, negative = short).
 * Pass --price for a limit order; omit price with --tif ioc for a market order.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#create-a-futures-order`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#place-futures-order`,
 		Run: createOrder,
 	}
 
@@ -33,7 +33,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#create-a-futures-order`
 		Short:   "List orders by status",
 		Long: `List futures orders filtered by status (open or finished) and optional contract.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-futures-orders`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#query-futures-order-list`,
 		Run: listOrders,
 	}
 
@@ -42,7 +42,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-futures-orders`,
 		Short: "Query a single order",
 		Long: `Query a single futures order by its id.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-a-single-order-3`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#query-single-order-details`,
 		Run: getOrder,
 	}
 
@@ -51,7 +51,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-a-single-order-3`,
 		Short: "Cancel an order, or all open orders of a contract",
 		Long: `Cancel an order by --order-id, or cancel all open orders of --contract when no id is given.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#cancel-a-single-order-3`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/futures/#cancel-single-order`,
 		Run: cancelOrder,
 	}
 

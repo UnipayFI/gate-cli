@@ -20,7 +20,7 @@ func InitAccountCmds() []*cobra.Command {
 equity, margin and liabilities. Use --currency to filter a single currency, and
 --json to see the account-wide totals (equity, margin rate, borrowed).
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-unified-account-information`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#get-unified-account-information`,
 		Run: showAccount,
 	}
 
@@ -30,7 +30,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-unified-account-inf
 		Long: `Show the account's unified margin mode (classic, single_currency, multi_currency
 or portfolio) and its feature toggles.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-mode-of-the-unified-account`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#query-mode-of-the-unified-account`,
 		Run: showMode,
 	}
 
@@ -39,7 +39,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#query-mode-of-the-unifi
 		Short: "Show the maximum borrowable amount of a currency",
 		Long: `Show the maximum amount of a currency the unified account can still borrow.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-the-maximum-borrowable-amount-of-unified-account`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#query-maximum-borrowable-amount-for-unified-account`,
 		Run: showBorrowable,
 	}
 
@@ -48,7 +48,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-the-maximum-borrowa
 		Short: "Show the maximum transferable amount of a currency",
 		Long: `Show the maximum amount of a currency that can be transferred out of the unified account.
 
-Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-the-maximum-transferable-amount-for-a-specific-currency-of-unified-account`,
+Docs Link: https://www.gate.com/docs/developers/apiv4/en/unified/#query-maximum-transferable-amount-for-unified-account`,
 		Run: showTransferable,
 	}
 
