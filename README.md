@@ -1,11 +1,12 @@
 # Gate CLI
 
 A command-line tool for the Gate.io (Gate.com) v4 API developed in Go,
-supporting spot and futures (perpetual) trading.
+supporting both the **classic** and **unified** account, across spot and
+futures (perpetual) trading.
 
 Built on the Gate v4 API (APIv4 `KEY` / `SIGN` / `Timestamp` HMAC-SHA512
-signing). This first phase covers the main **private** (API-key) spot and
-futures endpoints; public market-data endpoints are out of scope.
+signing). This phase covers the main **private** (API-key) endpoints for spot,
+futures and the unified account; public market-data endpoints are out of scope.
 
 ## Installation and Configuration
 
@@ -30,25 +31,32 @@ export HTTPS_PROXY="http://127.0.0.1:7890"
 Every command supports a global `--json` flag. Without it, results render as a
 table; with it, the raw API response is printed as indented JSON, e.g.:
 ```shell
-./gate-cli spot account --json
+./gate-cli classic spot account --json
 ```
 
 ## Usage
 All commands follow this format:
 ```
-./gate-cli [Module] [Subcommand] [Arguments]
+./gate-cli [Account] [Module] [Subcommand] [Arguments]
 
 Available Commands:
-  futures     Futures (perpetual) trading commands
+  classic     Classic account commands (spot, futures)
   help        Help about any command
-  spot        Spot trading commands
+  unified     Unified account commands
 ```
+
+The top level selects the **account type**: `classic` (independent spot and
+futures accounts) or `unified` (aggregated equity/margin, plus borrowing).
 
 Each leaf subcommand's `-h` output includes a `Docs Link:` pointing to the
 official Gate.io API documentation page for that endpoint.
 
-### Spot Module
-Exec: `./gate-cli spot [Subcommand] [Arguments]`
+### Classic Account
+Exec: `./gate-cli classic [Module] [Subcommand] [Arguments]` — independent spot
+and futures accounts.
+
+#### Spot
+Exec: `./gate-cli classic spot [Subcommand] [Arguments]`
 ```shell
 Available Commands:
   account       Show spot account balances
@@ -59,11 +67,11 @@ Available Commands:
 ```
 **[View detailed documentation](docs/spot.md)**
 
-### Futures Module
-Exec: `./gate-cli futures [Subcommand] [Arguments]`
+#### Futures
+Exec: `./gate-cli classic futures [Subcommand] [Arguments]`
 
-All futures commands accept a global `--settle` flag (default `usdt`, also
-`btc`) selecting the settle currency.
+All futures commands accept a `--settle` flag (default `usdt`, also `btc`)
+selecting the settle currency.
 ```shell
 Available Commands:
   account       Show futures account summary
@@ -74,3 +82,24 @@ Available Commands:
   trade         Query personal trading history
 ```
 **[View detailed documentation](docs/futures.md)**
+
+### Unified Account
+Exec: `./gate-cli unified [Subcommand] [Arguments]` — aggregated equity/margin
+across products, plus borrowing. The spot/futures trading commands are mirrored
+here and route to the unified account automatically (spot pins `account=unified`;
+futures issue the same requests as classic, the mode being decided server-side).
+```shell
+Available Commands:
+  account           Show unified account overview
+  mode              Show the unified account mode (read-only)
+  borrowable        Show the maximum borrowable amount of a currency
+  transferable      Show the maximum transferable amount of a currency
+  borrow            Borrow a currency
+  repay             Repay a borrowed currency
+  loans             List outstanding borrowings
+  loan-records      List borrow/repay history
+  interest-records  List interest-deduction history
+  spot              Spot trading (account=unified)
+  futures           Futures trading
+```
+**[View detailed documentation](docs/unified.md)**

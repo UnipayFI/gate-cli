@@ -6,6 +6,7 @@ import (
 	"github.com/UnipayFI/go-gate/v4/client"
 	"github.com/UnipayFI/go-gate/v4/futures"
 	"github.com/UnipayFI/go-gate/v4/spot"
+	"github.com/UnipayFI/go-gate/v4/unified"
 )
 
 // Client carries the API credentials and constructs per-product SDK clients on
@@ -36,4 +37,8 @@ func (c *Client) NewSpotClient() *spot.SpotClient {
 
 func (c *Client) NewFuturesClient() *futures.FuturesClient {
 	return gate.NewFuturesClient(c.baseOptions()...)
+}
+
+func (c *Client) NewUnifiedClient() *unified.UnifiedClient {
+	return gate.NewUnifiedClient(c.baseOptions()...)
 }

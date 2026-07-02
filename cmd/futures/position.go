@@ -8,14 +8,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	positionCmd = &cobra.Command{
+func InitPositionCmds() []*cobra.Command {
+	positionCmd := &cobra.Command{
 		Use:   "position",
 		Short: "Position management commands",
 		Long:  `Manage positions: list, get, margin, leverage, dual-mode, close-history.`,
 	}
 
-	positionListCmd = &cobra.Command{
+	positionListCmd := &cobra.Command{
 		Use:     "list",
 		Aliases: []string{"ls"},
 		Short:   "List positions",
@@ -25,7 +25,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-all-positions-of-a
 		Run: listPositions,
 	}
 
-	positionGetCmd = &cobra.Command{
+	positionGetCmd := &cobra.Command{
 		Use:   "get",
 		Short: "Get a single position",
 		Long: `Get a single position by contract.
@@ -34,7 +34,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-single-position`,
 		Run: getPosition,
 	}
 
-	positionMarginCmd = &cobra.Command{
+	positionMarginCmd := &cobra.Command{
 		Use:   "margin",
 		Short: "Update isolated position margin",
 		Long: `Add or reduce isolated position margin. --change is signed: positive adds, negative reduces.
@@ -43,7 +43,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#update-position-margin`
 		Run: updateMargin,
 	}
 
-	positionLeverageCmd = &cobra.Command{
+	positionLeverageCmd := &cobra.Command{
 		Use:   "leverage",
 		Short: "Update position leverage",
 		Long: `Update position leverage. Use "0" for cross margin, otherwise the isolated leverage.
@@ -52,7 +52,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#update-position-leverag
 		Run: updateLeverage,
 	}
 
-	positionDualModeCmd = &cobra.Command{
+	positionDualModeCmd := &cobra.Command{
 		Use:   "dual-mode",
 		Short: "Enable or disable hedge (dual) mode",
 		Long: `Enable or disable dual (hedge) position mode for the settle currency.
@@ -62,7 +62,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#enable-or-disable-dual-
 		Run: setDualMode,
 	}
 
-	positionCloseCmd = &cobra.Command{
+	positionCloseCmd := &cobra.Command{
 		Use:   "close-history",
 		Short: "Query position close history",
 		Long: `Query the position close (realised PnL) history.
@@ -70,9 +70,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#enable-or-disable-dual-
 Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-position-close-history`,
 		Run: showPositionClose,
 	}
-)
 
-func InitPositionCmds() []*cobra.Command {
 	positionListCmd.Flags().Bool("holding", false, "only positions currently holding size")
 
 	positionGetCmd.Flags().StringP("contract", "c", "", "contract, e.g. BTC_USDT")

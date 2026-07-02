@@ -7,17 +7,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var tradeCmd = &cobra.Command{
-	Use:   "trade",
-	Short: "Query personal trading history",
-	Long: `List personal futures trades for the settle currency. Use --contract to filter
+func InitTradeCmds() []*cobra.Command {
+	tradeCmd := &cobra.Command{
+		Use:   "trade",
+		Short: "Query personal trading history",
+		Long: `List personal futures trades for the settle currency. Use --contract to filter
 a contract and --order-id to filter a single order.
 
 Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-personal-trading-history-2`,
-	Run: listTrades,
-}
+		Run: listTrades,
+	}
 
-func InitTradeCmds() []*cobra.Command {
 	tradeCmd.Flags().StringP("contract", "c", "", "contract, e.g. BTC_USDT")
 	tradeCmd.Flags().Int64P("order-id", "i", 0, "filter by order id")
 	tradeCmd.Flags().IntP("limit", "l", 100, "max records (default 100)")

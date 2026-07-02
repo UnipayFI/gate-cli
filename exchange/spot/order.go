@@ -46,8 +46,11 @@ func (c *Client) CreateOrder(params map[string]string) (*spot.Order, error) {
 }
 
 // GetOrders lists orders for a currency pair filtered by status (open/finished).
-func (c *Client) GetOrders(currencyPair, status string, from, to time.Time, limit int) (*OrderList, error) {
+func (c *Client) GetOrders(currencyPair, status, account string, from, to time.Time, limit int) (*OrderList, error) {
 	service := c.NewSpotClient().NewListOrdersService(currencyPair, status)
+	if account != "" {
+		service.SetAccount(spot.Account(account))
+	}
 	if !from.IsZero() {
 		service.SetFrom(from)
 	}
@@ -67,8 +70,12 @@ func (c *Client) GetOrders(currencyPair, status string, from, to time.Time, limi
 
 // GetOpenOrders returns open orders grouped by currency pair, flattened into a
 // single order list for display.
-func (c *Client) GetOpenOrders() (*OrderList, error) {
-	groups, err := c.NewSpotClient().NewListAllOpenOrdersService().Do(context.Background())
+func (c *Client) GetOpenOrders(account string) (*OrderList, error) {
+	service := c.NewSpotClient().NewListAllOpenOrdersService()
+	if account != "" {
+		service.SetAccount(spot.Account(account))
+	}
+	groups, err := service.Do(context.Background())
 	if err != nil {
 		return nil, err
 	}
@@ -80,20 +87,31 @@ func (c *Client) GetOpenOrders() (*OrderList, error) {
 }
 
 // GetOrder queries a single order by id and currency pair.
-func (c *Client) GetOrder(orderID, currencyPair string) (*spot.Order, error) {
-	return c.NewSpotClient().NewGetOrderService(orderID, currencyPair).Do(context.Background())
+func (c *Client) GetOrder(orderID, currencyPair, account string) (*spot.Order, error) {
+	service := c.NewSpotClient().NewGetOrderService(orderID, currencyPair)
+	if account != "" {
+		service.SetAccount(spot.Account(account))
+	}
+	return service.Do(context.Background())
 }
 
 // CancelOrder cancels a single order by id and currency pair.
-func (c *Client) CancelOrder(orderID, currencyPair string) (*spot.Order, error) {
-	return c.NewSpotClient().NewCancelOrderService(orderID, currencyPair).Do(context.Background())
+func (c *Client) CancelOrder(orderID, currencyPair, account string) (*spot.Order, error) {
+	service := c.NewSpotClient().NewCancelOrderService(orderID, currencyPair)
+	if account != "" {
+		service.SetAccount(spot.Account(account))
+	}
+	return service.Do(context.Background())
 }
 
 // CancelOpenOrders cancels all open orders, optionally scoped to a currency pair.
-func (c *Client) CancelOpenOrders(currencyPair string) (*OrderList, error) {
+func (c *Client) CancelOpenOrders(currencyPair, account string) (*OrderList, error) {
 	service := c.NewSpotClient().NewCancelOrdersService()
 	if currencyPair != "" {
 		service.SetCurrencyPair(currencyPair)
+	}
+	if account != "" {
+		service.SetAccount(spot.Account(account))
 	}
 	orders, err := service.Do(context.Background())
 	if err != nil {

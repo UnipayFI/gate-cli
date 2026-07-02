@@ -9,13 +9,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	orderCmd = &cobra.Command{
+func InitOrderCmds() []*cobra.Command {
+	orderCmd := &cobra.Command{
 		Use:   "order",
 		Short: "Create, cancel, list and query futures orders",
 	}
 
-	orderCreateCmd = &cobra.Command{
+	orderCreateCmd := &cobra.Command{
 		Use:     "create",
 		Aliases: []string{"c"},
 		Short:   "Create an order",
@@ -27,7 +27,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#create-a-futures-order`
 		Run: createOrder,
 	}
 
-	orderListCmd = &cobra.Command{
+	orderListCmd := &cobra.Command{
 		Use:     "list",
 		Aliases: []string{"ls"},
 		Short:   "List orders by status",
@@ -37,7 +37,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#list-futures-orders`,
 		Run: listOrders,
 	}
 
-	orderGetCmd = &cobra.Command{
+	orderGetCmd := &cobra.Command{
 		Use:   "get",
 		Short: "Query a single order",
 		Long: `Query a single futures order by its id.
@@ -46,7 +46,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-a-single-order-3`,
 		Run: getOrder,
 	}
 
-	orderCancelCmd = &cobra.Command{
+	orderCancelCmd := &cobra.Command{
 		Use:   "cancel",
 		Short: "Cancel an order, or all open orders of a contract",
 		Long: `Cancel an order by --order-id, or cancel all open orders of --contract when no id is given.
@@ -54,9 +54,7 @@ Docs Link: https://www.gate.io/docs/developers/apiv4/en/#get-a-single-order-3`,
 Docs Link: https://www.gate.io/docs/developers/apiv4/en/#cancel-a-single-order-3`,
 		Run: cancelOrder,
 	}
-)
 
-func InitOrderCmds() []*cobra.Command {
 	orderCreateCmd.Flags().StringP("contract", "c", "", "contract, e.g. BTC_USDT")
 	orderCreateCmd.Flags().Int64P("size", "z", 0, "order size in contracts (signed: + long, - short)")
 	orderCreateCmd.Flags().String("price", "", "order price (decimal string); omit for market")
