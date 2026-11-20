@@ -3,7 +3,7 @@ module github.com/UnipayFI/gate-cli
 go 1.27.3
 
 require (
-	github.com/UnipayFI/go-gate/v4 v4.106.160
+	github.com/UnipayFI/go-gate/v4 v4.106.181
 	github.com/olekukonko/tablewriter v1.0.9
 	github.com/shopspring/decimal v1.4.0
 	github.com/spf13/cobra v1.9.1
